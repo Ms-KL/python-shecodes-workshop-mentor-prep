@@ -38,11 +38,19 @@ def increase_speed():
     global speed # moving out of local function into global environment
     speed += 1 # increase speed by 1 with every keystroke up
 
+# ! STEP 2.8.a: decrease speed using down arrow
+def decrease_speed():
+    global speed # moving out of local function into global environment
+    speed -= 1 # increase speed by 1 with every keystroke up
+
 # ! STEP 2.2: set keyboard binding
 turtle.listen() # listen for keystroke (onkey method)
 turtle.onkey(turn_left, 'Left')
 turtle.onkey(turn_right, 'Right')
 turtle.onkey(increase_speed, 'Up')
+
+# ! STEP 2.8.b: decrease speed using down arrow
+turtle.onkey(decrease_speed, 'Down')
 
 # ! STEP 1.8: move turtle
 while True:
