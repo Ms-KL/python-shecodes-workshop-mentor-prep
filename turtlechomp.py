@@ -21,6 +21,9 @@ player.color('darkorange')
 player.shape('turtle')
 player.penup() # won't leave a line as the turtle moves
 
+# ! STEP 2.7: fix turtle from jumping when arrow keys are pressed
+player.speed(0) # 0 = fasted animation speed
+
 # ! STEP 1.7: set speed variable
 speed = 1
 
