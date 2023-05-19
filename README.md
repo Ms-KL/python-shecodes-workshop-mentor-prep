@@ -1,4 +1,10 @@
-# python-shecodes-workshop
+# Python She Codes One Day Workshop
 
-https://tutorials.shecodes.com.au/python/
-https://tutorials.shecodes.com.au/python/space_turtle_chomp/
+## Mentor Prep
+
+<p> Run through of She Codes Tutorial in preparation for mentoring</p>
+<br>
+
+### References:
+
+- https://tutorials.shecodes.com.au/python/
