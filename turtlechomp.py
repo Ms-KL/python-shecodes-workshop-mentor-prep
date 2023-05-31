@@ -8,12 +8,28 @@ import turtle
 # ! MODULE 2:
 # https://tutorials.shecodes.com.au/python/space_turtle_chomp/part_2__turn_baby_turn/
 
+# ! MODULE 3:
+# https://tutorials.shecodes.com.au/python/space_turtle_chomp/part_3__know_your_boundaries_turtle/
+
 # __________________________
 
 # ! STEP 1.5: setup screen
 turtle.setup(650,650) # window size
 wn = turtle.Screen() # alias for screen
 wn.bgcolor('navy') #background colour
+
+# ! STEP 3.2: draw border
+mypen = turtle.Turtle()
+mypen.penup()
+mypen.setposition(-300,-300) # bottom left corner
+mypen.pendown()
+mypen.pensize(3)
+mypen.color('white')
+mypen.speed(0) # fastest speed (instant draw of border - remove to see border being drawn)
+for side in range(4): # draw square (repeat loop/side 4 times)
+    mypen.forward(600) # length of square
+    mypen.left(90) # angle of square
+mypen.hideturtle() # hide turtle
 
 # ! STEP 1.6: create player turtle
 player = turtle.Turtle()
