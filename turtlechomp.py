@@ -72,6 +72,15 @@ turtle.onkey(decrease_speed, 'Down')
 while True:
     player.forward(speed) # moves turtle at speed of 1
 
+    # ! STEP 3.4: boundary detection
+    # boundary player checking x coordinate (bounce turtle off x/left and right edges)
+    if player.xcor() > 290 or player.xcor() < -290:
+        player.right(180) # turn turtle around 180 degrees
+    
+    # boundary player checking y coordinate (bounce turtle off y/top and bottom edges)
+    if player.ycor() > 290 or player.ycor() < -290:
+        player.right(180) # turn turtle around 180 degrees
+
 # ! RUN to test
 
 # __________________________
