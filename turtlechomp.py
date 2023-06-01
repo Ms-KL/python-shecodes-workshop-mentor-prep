@@ -23,8 +23,9 @@ mypen = turtle.Turtle()
 mypen.penup()
 mypen.setposition(-300,-300) # bottom left corner
 mypen.pendown()
-mypen.pensize(3)
-mypen.color('white')
+# ! STEP 3.5: change border thickness and color
+mypen.pensize(6)
+mypen.color('yellow')
 mypen.speed(0) # fastest speed (instant draw of border - remove to see border being drawn)
 for side in range(4): # draw square (repeat loop/side 4 times)
     mypen.forward(600) # length of square
@@ -72,14 +73,16 @@ turtle.onkey(decrease_speed, 'Down')
 while True:
     player.forward(speed) # moves turtle at speed of 1
 
-    # ! STEP 3.4: boundary detection
+    # ! STEP 3.4: boundary detection & turtle bounce
     # boundary player checking x coordinate (bounce turtle off x/left and right edges)
     if player.xcor() > 290 or player.xcor() < -290:
-        player.right(180) # turn turtle around 180 degrees
+        # ! STEP 3.5: change angle of turtle when it hits boundary
+        player.right(100) # turn turtle around 100 degrees
     
     # boundary player checking y coordinate (bounce turtle off y/top and bottom edges)
     if player.ycor() > 290 or player.ycor() < -290:
-        player.right(180) # turn turtle around 180 degrees
+        # ! STEP 3.5: change angle of turtle when it hits boundary
+        player.right(100) # turn turtle around 100 degrees
 
 # ! RUN to test
 
