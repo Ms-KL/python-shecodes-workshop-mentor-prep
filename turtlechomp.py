@@ -57,7 +57,10 @@ food.penup()
 food.speed(0) # immediately draw food on screen
 
 # ! STEP 4.3: set food position
-food.setposition(-100, 100) # set position of food (instead of same position as turtle)
+# food.setposition(-100, 100) # set position of food (instead of same position as turtle) --> REPLACE with STEP 4.10
+
+# ! STEP 4.10: set food position to random position on screen
+food.setposition(random.randint(-290, 290), random.randint(-290, 290)) # random position on screen (away from border and turtle)
 
 # ! STEP 1.7: set speed variable
 speed = 1
