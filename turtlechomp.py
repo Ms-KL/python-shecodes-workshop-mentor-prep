@@ -5,6 +5,9 @@ import turtle
 # ! STEP 4.5: import math module
 import math
 
+# ! STEP 4.7: import random module
+import random
+
 # ! MODULE 1: 
 #  https://tutorials.shecodes.com.au/python/space_turtle_chomp/part_1_space_turtle_chomp/
 
@@ -112,7 +115,11 @@ while True:
                     -food.ycor(),2)) # square of y coordinate
     
     if d < 20: # if distance is less than 20 pixels
-        food.hideturtle() # hide food when turtle eats it
+
+        # food.hideturtle() # hide food when turtle eats it --> REMOVED AND REPLACED WITH STEP 4.8
+
+        # ! STEP 4.8: move turtle after eating food
+        food.setposition(random.randint(-290, 290), random.randint(-290, 290)) # move food to random position on screen (away from border and turtle)
 
 # ! RUN to test
 
