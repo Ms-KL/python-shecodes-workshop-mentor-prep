@@ -11,6 +11,8 @@ import turtle
 # ! MODULE 3:
 # https://tutorials.shecodes.com.au/python/space_turtle_chomp/part_3__know_your_boundaries_turtle/
 
+# ! MODULE 4:
+# https://tutorials.shecodes.com.au/python/space_turtle_chomp/part_4__whats_the_turtle_chomping/
 # __________________________
 
 # ! STEP 1.5: setup screen
@@ -40,6 +42,13 @@ player.penup() # won't leave a line as the turtle moves
 
 # ! STEP 2.7: fix turtle from jumping when arrow keys are pressed
 player.speed(0) # 0 = fasted animation speed
+
+# ! STEP 4.1: create food
+food = turtle.Turtle()
+food.color('lightgreen')
+food.shape('circle') # cabbage for turtle to eat and gain points
+food.penup()
+food.speed(0) # immediately draw food on screen
 
 # ! STEP 1.7: set speed variable
 speed = 1
