@@ -19,6 +19,10 @@ import random
 
 # ! MODULE 4:
 # https://tutorials.shecodes.com.au/python/space_turtle_chomp/part_4__whats_the_turtle_chomping/
+
+# ! MODULE 5:
+# https://tutorials.shecodes.com.au/python/space_turtle_chomp/part_5__collisions_become_a_function/
+
 # __________________________
 
 # ! STEP 1.5: setup screen
@@ -31,6 +35,7 @@ mypen = turtle.Turtle()
 mypen.penup()
 mypen.setposition(-300,-300) # bottom left corner
 mypen.pendown()
+
 # ! STEP 3.5: change border thickness and color
 mypen.pensize(6)
 mypen.color('yellow')
@@ -81,6 +86,21 @@ def decrease_speed():
     global speed # moving out of local function into global environment
     speed -= 1 # increase speed by 1 with every keystroke up
 
+# ! STEP 5.1: convert collision checking into function
+def isCollision(t1, t2):
+    '''
+    If t1 and t2 are in the same location, they collide = True.
+    
+    Arguments:
+    * t1 = turtle
+    * t2 = food
+    '''
+    d = math.sqrt(math.pow(t1.xcor()-t2.xcor(),2) + math.pow(t1.ycor()-t2.ycor(),2))
+    if d < 20:
+        return True
+    else:
+        return False
+
 # ! STEP 2.2: set keyboard binding
 turtle.listen() # listen for keystroke (onkey method)
 turtle.onkey(turn_left, 'Left')
@@ -105,24 +125,28 @@ while True:
         # ! STEP 3.5: change angle of turtle when it hits boundary
         player.right(100) # turn turtle around 100 degrees
     
-    # ! STEP 4.6: collision checking
-    # calculate distance between turtle and food
-    # this formula is the distance formula between two points and uses pythagorean theorem
-    d = math.sqrt( 
-            math.pow( # square root of sum of squares
-                player.xcor() # x coordinate
-                    -food.xcor(),2) # square of x coordinate
-            + 
-            math.pow( # square root of sum of squares
-                player.ycor() # y coordinate
-                    -food.ycor(),2)) # square of y coordinate
+    # # ! STEP 4.6: collision checking --> REMOVED and REPLACED WITH STEP 5.2
+    # # calculate distance between turtle and food
+    # # this formula is the distance formula between two points and uses pythagorean theorem
+    # d = math.sqrt( 
+    #         math.pow( # square root of sum of squares
+    #             player.xcor() # x coordinate
+    #                 -food.xcor(),2) # square of x coordinate
+    #         + 
+    #         math.pow( # square root of sum of squares
+    #             player.ycor() # y coordinate
+    #                 -food.ycor(),2)) # square of y coordinate
     
-    if d < 20: # if distance is less than 20 pixels
+    # if d < 20: # if distance is less than 20 pixels
 
-        # food.hideturtle() # hide food when turtle eats it --> REMOVED AND REPLACED WITH STEP 4.8
+    #     # food.hideturtle() # hide food when turtle eats it --> REMOVED AND REPLACED WITH STEP 4.8
 
-        # ! STEP 4.8: move turtle after eating food
-        food.setposition(random.randint(-290, 290), random.randint(-290, 290)) # move food to random position on screen (away from border and turtle)
+    #     # ! STEP 4.8: move turtle after eating food  --> REMOVED and REPLACED WITH STEP 5.2
+    #     food.setposition(random.randint(-290, 290), random.randint(-290, 290)) # move food to random position on screen (away from border and turtle)
+
+    # ! STEP 5.2: collision checking using new function from step 5.1 (replaced steps 4.6 + 4.8)
+    if isCollision(player, food):
+        food.setposition(random.randint(-290, 290), random.randint(-290, 290))
 
 # ! RUN to test
 
