@@ -25,6 +25,9 @@
 # https://tutorials.shecodes.com.au/python/space_turtle_chomp/part_8__creating_space_and_sound/
 
 # ! MODULE 9:
+# https://tutorials.shecodes.com.au/python/space_turtle_chomp/part_9__keeping_score/
+
+# ! MODULE 10:
 # https://tutorials.shecodes.com.au/python/space_turtle_chomp/part_10__creating_your_opponent/
 
 # __________________________
@@ -75,6 +78,15 @@ player.penup() # won't leave a line as the turtle moves
 
 # ! STEP 2.7: fix turtle from jumping when arrow keys are pressed
 player.speed(0) # 0 = fastest animation speed
+
+# ! STEP 10.1: create opponent:
+# Create opponent turtle
+comp = turtle.Turtle()
+comp.color('red')
+comp.shape('turtle')
+comp.penup()
+comp.setposition(random.randint(-290, 290), random.randint(-290, 290))
+
 
 # ! STEP 9.1: create player score
 # Create variable score
