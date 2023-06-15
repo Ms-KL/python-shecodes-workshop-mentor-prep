@@ -21,6 +21,9 @@
 # ! MODULE 7:
 # https://tutorials.shecodes.com.au/python/space_turtle_chomp/part_7__more_cabbage_more/
 
+# ! MODULE 8:
+# https://tutorials.shecodes.com.au/python/space_turtle_chomp/part_8__creating_space_and_sound/
+
 # __________________________
 
 import turtle
@@ -68,19 +71,6 @@ player.speed(0) # 0 = fasted animation speed
 # ! STEP 7.1: create empty list to count for max number of cabbages
 maxFoods = 20
 foods = [] 
-
-# # ! STEP 4.1: create food --> REPLACED WITH STEP 7.2
-# food = turtle.Turtle()
-# food.color('lightgreen')
-# food.shape('circle') # cabbage for turtle to eat and gain points
-# food.penup()
-# food.speed(0) # immediately draw food on screen
-
-# # ! STEP 4.3: set food position --> REPLACED WITH STEP 4.10
-# # food.setposition(-100, 100) # set position of food (instead of same position as turtle) --> REPLACE with STEP 4.10
-
-# # ! STEP 4.10: set food position to random position on screen --> REPLACED WITH STEP 7.2
-# food.setposition(random.randint(-290, 290), random.randint(-290, 290)) # random position on screen (away from border and turtle)
 
 # ! STEP 7.2: for loop to count and move food until maxFoods number is reached
 # this ends up foods.[1] = object, foods.[2] = object etc until max foods is reached
@@ -178,7 +168,20 @@ while True:
 
 
 
+# ! ----------- Replaced Code:
 
+# # ! STEP 4.1: create food --> REPLACED WITH STEP 7.2
+# food = turtle.Turtle()
+# food.color('lightgreen')
+# food.shape('circle') # cabbage for turtle to eat and gain points
+# food.penup()
+# food.speed(0) # immediately draw food on screen
+
+# # ! STEP 4.3: set food position --> REPLACED WITH STEP 4.10
+# # food.setposition(-100, 100) # set position of food (instead of same position as turtle) --> REPLACE with STEP 4.10
+
+# # ! STEP 4.10: set food position to random position on screen --> REPLACED WITH STEP 7.2
+# food.setposition(random.randint(-290, 290), random.randint(-290, 290)) # random position on screen (away from border and turtle)
     
     # # ! STEP 4.6: collision checking --> REMOVED and REPLACED WITH STEP 5.2
     # # calculate distance between turtle and food
@@ -204,9 +207,6 @@ while True:
     # if isCollision(player, food):
     #     food.setposition(random.randint(-290, 290), random.randint(-290, 290))
     #     food.right(random.randint(0, 360))
-
-    
-
 
 # ! RUN to test
 
