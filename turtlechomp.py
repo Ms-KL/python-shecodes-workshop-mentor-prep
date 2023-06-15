@@ -25,6 +25,9 @@
 # https://tutorials.shecodes.com.au/python/space_turtle_chomp/part_8__creating_space_and_sound/
 
 # ! MODULE 9:
+# https://tutorials.shecodes.com.au/python/space_turtle_chomp/part_9__keeping_score/
+
+# ! MODULE 10:
 # https://tutorials.shecodes.com.au/python/space_turtle_chomp/part_10__creating_your_opponent/
 
 # __________________________
@@ -76,9 +79,24 @@ player.penup() # won't leave a line as the turtle moves
 # ! STEP 2.7: fix turtle from jumping when arrow keys are pressed
 player.speed(0) # 0 = fastest animation speed
 
-# ! STEP 9.1: create player score
+# ! STEP 10.1: create opponent:
+# Create opponent turtle
+comp = turtle.Turtle()
+comp.color('red')
+comp.shape('turtle')
+comp.penup()
+comp.setposition(random.randint(-290, 290), random.randint(-290, 290))
+
+# ! STEP 10.8: create competition score
+# Create competition score
+mypen2 = turtle.Turtle()
+mypen2.color('red')
+mypen2.hideturtle()
+
+
 # Create variable score
-score = 0
+score = 0 # ! STEP 9.1: create player score
+comp_score = 0 # ! STEP 10.7
 
 # ! STEP 7.1: create empty list to count for max number of cabbages
 maxFoods = 10
@@ -144,6 +162,7 @@ turtle.onkey(decrease_speed, 'Down')
 # ! STEP 1.8: move turtle
 while True:
     player.forward(speed) # moves turtle at speed of 1
+    comp.forward(2) # moves opponent turtle at speed of 2 # ! STEP 10.3
 
     # ! STEP 3.4: boundary detection & turtle bounce
     # boundary player checking x coordinate (bounce turtle off x/left and right edges)
@@ -158,6 +177,18 @@ while True:
         # ! STEP 3.5: change angle of turtle when it hits boundary
         player.right(180) # turn turtle around 100 degrees
         # ! STEP 8.7: play sound fx with boundary bounce
+        winsound.PlaySound('assets/bounce.wav', winsound.SND_ASYNC)
+    
+
+    # ! STEP 10.5: replicate boundary checking to competitor
+    # boundary comp checking x coordinate (bounce turtle off x/left and right edges)
+    if comp.xcor() > 290 or comp.xcor() < -290:
+        comp.right(180) # turn turtle around 100 degrees
+        winsound.PlaySound('assets/bounce.wav', winsound.SND_ASYNC)
+    
+    # boundary comp checking y coordinate (bounce turtle off y/top and bottom edges)
+    if comp.ycor() > 290 or comp.ycor() < -290:
+        comp.right(180) # turn turtle around 100 degrees
         winsound.PlaySound('assets/bounce.wav', winsound.SND_ASYNC)
 
     # ! STEP 7.3: move food as many times as there are foods in the food list
@@ -185,9 +216,7 @@ while True:
             food.right(random.randint(0, 360))
             # ! STEP 8.7: play sound fx when turtle collides with food
             winsound.PlaySound('assets/chomp.wav', winsound.SND_ASYNC)
-
             score +=1 # ! STEP 9.2: add score for every collision
-
             # ! STEP 9.3: draw the score for every collision
             # Draw the score on the screen
             mypen.undo() #! STEP 9.4: undo previous draw to stop layering
@@ -196,6 +225,19 @@ while True:
             mypen.setposition(-290, 310)
             scorestring ="Score: %s" % score
             mypen.write(scorestring, False, align='left', font=('Arial', 14, 'normal'))
+        
+        # ! STEP 10.10: duplicate collision checking for comp
+        if isCollision(comp, food):
+            food.setposition(random.randint(-290, 290), random.randint(-290, 290))
+            food.right(random.randint(0, 360))
+            winsound.PlaySound('assets/chomp.wav', winsound.SND_ASYNC)
+            comp_score +=1 
+            mypen2.undo() 
+            mypen2.penup()
+            mypen2.hideturtle()
+            mypen2.setposition(200, 305)
+            scorestring ="Score: %s" % score
+            mypen2.write(scorestring, False, align='left', font=('Arial', 14, 'normal'))
 
 
 
