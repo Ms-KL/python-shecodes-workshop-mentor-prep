@@ -34,10 +34,14 @@ import math
 # ! STEP 4.7: import random module
 import random
 
+# ! STEP 8.6: import sound module to play sound fx
+import winsound
+
 # ! STEP 1.5: setup screen
 turtle.setup(650,650) # window size
 wn = turtle.Screen() # alias for screen
-wn.bgcolor('navy') #background colour
+# ! STEP 8.4: change background color
+wn.bgcolor('black') #background colour
 # ! STEP 8.3: add background image
 wn.bgpic('assets/kbgame-bg.gif')
 
@@ -68,10 +72,10 @@ player.shape('turtle')
 player.penup() # won't leave a line as the turtle moves
 
 # ! STEP 2.7: fix turtle from jumping when arrow keys are pressed
-player.speed(0) # 0 = fasted animation speed
+player.speed(0) # 0 = fastest animation speed
 
 # ! STEP 7.1: create empty list to count for max number of cabbages
-maxFoods = 20
+maxFoods = 10
 foods = [] 
 
 # ! STEP 7.2: for loop to count and move food until maxFoods number is reached
@@ -140,11 +144,15 @@ while True:
     if player.xcor() > 290 or player.xcor() < -290:
         # ! STEP 3.5: change angle of turtle when it hits boundary
         player.right(180) # turn turtle around 100 degrees
+        # ! STEP 8.7: play sound fx with boundary bounce
+        winsound.PlaySound('assets/bounce.wav', winsound.SND_ASYNC)
     
     # boundary player checking y coordinate (bounce turtle off y/top and bottom edges)
     if player.ycor() > 290 or player.ycor() < -290:
         # ! STEP 3.5: change angle of turtle when it hits boundary
         player.right(180) # turn turtle around 100 degrees
+        # ! STEP 8.7: play sound fx with boundary bounce
+        winsound.PlaySound('assets/bounce.wav', winsound.SND_ASYNC)
 
     # ! STEP 6.1: move food around screen --> REPLACED WITH STEP 7.3
     # ! STEP 6.4: make food move faster (From 1 to 3) --> REPLACED WITH STEP 7.3
@@ -159,16 +167,22 @@ while True:
         # ! STEP 6.6: change angle of food when it hits boundary (bounce food off edges)
         # Boundary Food Checking x coordinate
         if food.xcor() > 290 or food.xcor() < -290:
-            food.right(150)
+            food.right(180)
+            # ! STEP 8.7: play sound fx with boundary bounce
+            winsound.PlaySound('assets/bounce.wav', winsound.SND_ASYNC)
 
         # Boundary Food Checking y coordinate
         if food.ycor() > 290 or food.ycor() < -290:
-            food.right(150) 
+            food.right(180) 
+            # ! STEP 8.7: play sound fx with boundary bounce
+            winsound.PlaySound('assets/bounce.wav', winsound.SND_ASYNC)
         
         # ! STEP 7.4: Move and indent
         if isCollision(player, food):
             food.setposition(random.randint(-290, 290), random.randint(-290, 290))
             food.right(random.randint(0, 360))
+            # ! STEP 8.7: play sound fx when turtle collides with food
+            winsound.PlaySound('assets/chomp.wav', winsound.SND_ASYNC)
 
 
 
