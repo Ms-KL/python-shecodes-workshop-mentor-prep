@@ -78,6 +78,8 @@ foods = []
 # this ends up foods.[1] = object, foods.[2] = object etc until max foods is reached
 for count in range(maxFoods):
     new_food = turtle.Turtle()
+    # ! STEP 8.4: reduce the size of food
+    new_food.shapesize(.5)
     new_food.color("lightgreen")
     new_food.shape("circle")
     new_food.penup()
