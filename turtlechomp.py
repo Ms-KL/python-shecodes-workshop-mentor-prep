@@ -1,13 +1,5 @@
 # Turtle Graphics Game – Space Turtle Chomp
 
-import turtle
-
-# ! STEP 4.5: import math module
-import math
-
-# ! STEP 4.7: import random module
-import random
-
 # ! MODULE 1: 
 #  https://tutorials.shecodes.com.au/python/space_turtle_chomp/part_1_space_turtle_chomp/
 
@@ -26,12 +18,28 @@ import random
 # ! MODULE 6:
 # https://tutorials.shecodes.com.au/python/space_turtle_chomp/part_6__setting_boundary_for_cabbage/
 
+# ! MODULE 7:
+# https://tutorials.shecodes.com.au/python/space_turtle_chomp/part_7__more_cabbage_more/
+
 # __________________________
+
+import turtle
+
+# ! STEP 4.5: import math module
+import math
+
+# ! STEP 4.7: import random module
+import random
 
 # ! STEP 1.5: setup screen
 turtle.setup(650,650) # window size
 wn = turtle.Screen() # alias for screen
 wn.bgcolor('navy') #background colour
+
+# ! STEP 7.6: stop screen from being jumpy due to refreshing of multiple foods.
+# tells computer not to refresh screen each time and speeds up animation
+wn.tracer(3)
+
 
 # ! STEP 3.2: draw border
 mypen = turtle.Turtle()
@@ -57,18 +65,34 @@ player.penup() # won't leave a line as the turtle moves
 # ! STEP 2.7: fix turtle from jumping when arrow keys are pressed
 player.speed(0) # 0 = fasted animation speed
 
-# ! STEP 4.1: create food 
-food = turtle.Turtle()
-food.color('lightgreen')
-food.shape('circle') # cabbage for turtle to eat and gain points
-food.penup()
-food.speed(0) # immediately draw food on screen
+# ! STEP 7.1: create empty list to count for max number of cabbages
+maxFoods = 20
+foods = [] 
 
-# ! STEP 4.3: set food position
-# food.setposition(-100, 100) # set position of food (instead of same position as turtle) --> REPLACE with STEP 4.10
+# # ! STEP 4.1: create food --> REPLACED WITH STEP 7.2
+# food = turtle.Turtle()
+# food.color('lightgreen')
+# food.shape('circle') # cabbage for turtle to eat and gain points
+# food.penup()
+# food.speed(0) # immediately draw food on screen
 
-# ! STEP 4.10: set food position to random position on screen
-food.setposition(random.randint(-290, 290), random.randint(-290, 290)) # random position on screen (away from border and turtle)
+# # ! STEP 4.3: set food position --> REPLACED WITH STEP 4.10
+# # food.setposition(-100, 100) # set position of food (instead of same position as turtle) --> REPLACE with STEP 4.10
+
+# # ! STEP 4.10: set food position to random position on screen --> REPLACED WITH STEP 7.2
+# food.setposition(random.randint(-290, 290), random.randint(-290, 290)) # random position on screen (away from border and turtle)
+
+# ! STEP 7.2: for loop to count and move food until maxFoods number is reached
+# this ends up foods.[1] = object, foods.[2] = object etc until max foods is reached
+for count in range(maxFoods):
+    new_food = turtle.Turtle()
+    new_food.color("lightgreen")
+    new_food.shape("circle")
+    new_food.penup()
+    new_food.speed(0)
+    new_food.setposition(random.randint(-290, 290), random.randint(-290, 290))
+    foods.append(new_food)
+
 
 # ! STEP 1.7: set speed variable
 speed = 1
@@ -127,20 +151,34 @@ while True:
     if player.ycor() > 290 or player.ycor() < -290:
         # ! STEP 3.5: change angle of turtle when it hits boundary
         player.right(180) # turn turtle around 100 degrees
-    
-    # ! STEP 6.6: change angle of food when it hits boundary (bounce food off edges)
-    # Boundary Food Checking x coordinate
-    if food.xcor() > 290 or food.xcor() < -290:
-        food.right(150)
 
-    # Boundary Food Checking y coordinate
-    if food.ycor() > 290 or food.ycor() < -290:
-        food.right(150) 
+    # ! STEP 6.1: move food around screen --> REPLACED WITH STEP 7.3
+    # ! STEP 6.4: make food move faster (From 1 to 3) --> REPLACED WITH STEP 7.3
+    # food.forward(4)
 
-    
-    # ! STEP 6.1: move food around screen
-    # ! STEP 6.4: make food move faster (From 1 to 3)
-    food.forward(4)
+    # ! STEP 7.3: move food as many times as there are foods in the food list
+    # Move food around
+    for food in foods:
+        food.forward(3)
+
+    # ! STEP 7.3: indent -->
+        # ! STEP 6.6: change angle of food when it hits boundary (bounce food off edges)
+        # Boundary Food Checking x coordinate
+        if food.xcor() > 290 or food.xcor() < -290:
+            food.right(150)
+
+        # Boundary Food Checking y coordinate
+        if food.ycor() > 290 or food.ycor() < -290:
+            food.right(150) 
+        
+        # ! STEP 7.4: Move and indent
+        if isCollision(player, food):
+            food.setposition(random.randint(-290, 290), random.randint(-290, 290))
+            food.right(random.randint(0, 360))
+
+
+
+
     
     # # ! STEP 4.6: collision checking --> REMOVED and REPLACED WITH STEP 5.2
     # # calculate distance between turtle and food
@@ -161,11 +199,11 @@ while True:
     #     # ! STEP 4.8: move turtle after eating food  --> REMOVED and REPLACED WITH STEP 5.2
     #     food.setposition(random.randint(-290, 290), random.randint(-290, 290)) # move food to random position on screen (away from border and turtle)
 
-    # ! STEP 5.2: collision checking using new function from step 5.1 (replaced steps 4.6 + 4.8)
-        # ! STEP 6.3: have food move fom a random position
-    if isCollision(player, food):
-        food.setposition(random.randint(-290, 290), random.randint(-290, 290))
-        food.right(random.randint(0, 360))
+    # # ! STEP 5.2: collision checking using new function from step 5.1 (replaced steps 4.6 + 4.8)
+    #     # ! STEP 6.3: have food move fom a random position ---> MOVED. SEE STEP 7.4
+    # if isCollision(player, food):
+    #     food.setposition(random.randint(-290, 290), random.randint(-290, 290))
+    #     food.right(random.randint(0, 360))
 
     
 
