@@ -23,6 +23,9 @@ import random
 # ! MODULE 5:
 # https://tutorials.shecodes.com.au/python/space_turtle_chomp/part_5__collisions_become_a_function/
 
+# ! MODULE 6:
+# https://tutorials.shecodes.com.au/python/space_turtle_chomp/part_6__setting_boundary_for_cabbage/
+
 # __________________________
 
 # ! STEP 1.5: setup screen
@@ -118,12 +121,26 @@ while True:
     # boundary player checking x coordinate (bounce turtle off x/left and right edges)
     if player.xcor() > 290 or player.xcor() < -290:
         # ! STEP 3.5: change angle of turtle when it hits boundary
-        player.right(100) # turn turtle around 100 degrees
+        player.right(180) # turn turtle around 100 degrees
     
     # boundary player checking y coordinate (bounce turtle off y/top and bottom edges)
     if player.ycor() > 290 or player.ycor() < -290:
         # ! STEP 3.5: change angle of turtle when it hits boundary
-        player.right(100) # turn turtle around 100 degrees
+        player.right(180) # turn turtle around 100 degrees
+    
+    # ! STEP 6.6: change angle of food when it hits boundary (bounce food off edges)
+    # Boundary Food Checking x coordinate
+    if food.xcor() > 290 or food.xcor() < -290:
+        food.right(150)
+
+    # Boundary Food Checking y coordinate
+    if food.ycor() > 290 or food.ycor() < -290:
+        food.right(150) 
+
+    
+    # ! STEP 6.1: move food around screen
+    # ! STEP 6.4: make food move faster (From 1 to 3)
+    food.forward(4)
     
     # # ! STEP 4.6: collision checking --> REMOVED and REPLACED WITH STEP 5.2
     # # calculate distance between turtle and food
@@ -145,8 +162,13 @@ while True:
     #     food.setposition(random.randint(-290, 290), random.randint(-290, 290)) # move food to random position on screen (away from border and turtle)
 
     # ! STEP 5.2: collision checking using new function from step 5.1 (replaced steps 4.6 + 4.8)
+        # ! STEP 6.3: have food move fom a random position
     if isCollision(player, food):
         food.setposition(random.randint(-290, 290), random.randint(-290, 290))
+        food.right(random.randint(0, 360))
+
+    
+
 
 # ! RUN to test
 
