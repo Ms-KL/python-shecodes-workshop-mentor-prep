@@ -14,4 +14,4 @@ Run through of She Codes Tutorial in preparation for [She{Codes} One Day Worksho
 
 ### WIP:
 
-<img src="assets\wip-image.png" height="350" />
+<img src="assets\wip-image-new.png" height="350" />
