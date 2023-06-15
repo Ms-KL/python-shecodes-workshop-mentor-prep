@@ -38,6 +38,8 @@ import random
 turtle.setup(650,650) # window size
 wn = turtle.Screen() # alias for screen
 wn.bgcolor('navy') #background colour
+# ! STEP 8.3: add background image
+wn.bgpic('assets/kbgame-bg.gif')
 
 # ! STEP 7.6: stop screen from being jumpy due to refreshing of multiple foods.
 # tells computer not to refresh screen each time and speeds up animation
