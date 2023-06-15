@@ -30,26 +30,23 @@
 # ! MODULE 10:
 # https://tutorials.shecodes.com.au/python/space_turtle_chomp/part_10__creating_your_opponent/
 
+# ! MODULE 11:
+# https://tutorials.shecodes.com.au/python/space_turtle_chomp/part_11__60_second_countdown/
+
 # __________________________
 
 import turtle
-
-# ! STEP 4.5: import math module
-import math
-
-# ! STEP 4.7: import random module
-import random
-
-# ! STEP 8.6: import sound module to play sound fx
-import winsound
+import math # ! STEP 4.5
+import random # ! STEP 4.7
+import winsound # ! STEP 8.6
+import time # ! STEP 11.1
 
 # ! STEP 1.5: setup screen
+# Setup Screen
 turtle.setup(650,650) # window size
 wn = turtle.Screen() # alias for screen
-# ! STEP 8.4: change background color
-wn.bgcolor('black') #background colour
-# ! STEP 8.3: add background image
-wn.bgpic('assets/kbgame-bg.gif')
+wn.bgcolor('black') # ! STEP 8.4: change background color
+wn.bgpic('assets/kbgame-bg.gif') # ! STEP 8.3: add background image
 
 # ! STEP 7.6: stop screen from being jumpy due to refreshing of multiple foods.
 # tells computer not to refresh screen each time and speeds up animation
@@ -106,8 +103,7 @@ foods = []
 # this ends up foods.[1] = object, foods.[2] = object etc until max foods is reached
 for count in range(maxFoods):
     new_food = turtle.Turtle()
-    # ! STEP 8.4: reduce the size of food
-    new_food.shapesize(.5)
+    new_food.shapesize(.5) # ! STEP 8.4: reduce the size of food
     new_food.color("lightgreen")
     new_food.shape("circle")
     new_food.penup()
@@ -115,9 +111,9 @@ for count in range(maxFoods):
     new_food.setposition(random.randint(-290, 290), random.randint(-290, 290))
     foods.append(new_food)
 
-
-# ! STEP 1.7: set speed variable
-speed = 1
+speed = 1 # ! STEP 1.7: set speed variable
+# Set game time limit for 1 minute (6 * 10 seconds)
+timeout = time.time() + 10*6 # ! STEP 10.2
 
 # ! STEP 2.3: define functions for moving turtle
 def turn_left():
@@ -161,6 +157,17 @@ turtle.onkey(decrease_speed, 'Down')
 
 # ! STEP 1.8: move turtle
 while True:
+
+    # ! STEP 11.3
+    # gametime goes up by 1 for each loop until it reaches 6
+    # if gametime reaches 6 or if timeout variable above is less than the time its taken, stop the loop. 
+    gametime = 0
+    if gametime == 6 or time.time() > timeout:
+        break
+    gametime = gametime - 1
+
+
+    # ! STEP 10.3
     player.forward(speed) # moves turtle at speed of 1
     comp.forward(2) # moves opponent turtle at speed of 2 # ! STEP 10.3
 
@@ -168,7 +175,7 @@ while True:
     # boundary player checking x coordinate (bounce turtle off x/left and right edges)
     if player.xcor() > 290 or player.xcor() < -290:
         # ! STEP 3.5: change angle of turtle when it hits boundary
-        player.right(180) # turn turtle around 100 degrees
+        player.right(120) # turn turtle around 100 degrees
         # ! STEP 8.7: play sound fx with boundary bounce
         winsound.PlaySound('assets/bounce.wav', winsound.SND_ASYNC)
     
@@ -188,7 +195,7 @@ while True:
     
     # boundary comp checking y coordinate (bounce turtle off y/top and bottom edges)
     if comp.ycor() > 290 or comp.ycor() < -290:
-        comp.right(180) # turn turtle around 100 degrees
+        comp.right(120) # turn turtle around 100 degrees
         winsound.PlaySound('assets/bounce.wav', winsound.SND_ASYNC)
 
     # ! STEP 7.3: move food as many times as there are foods in the food list
@@ -217,6 +224,7 @@ while True:
             # ! STEP 8.7: play sound fx when turtle collides with food
             winsound.PlaySound('assets/chomp.wav', winsound.SND_ASYNC)
             score +=1 # ! STEP 9.2: add score for every collision
+
             # ! STEP 9.3: draw the score for every collision
             # Draw the score on the screen
             mypen.undo() #! STEP 9.4: undo previous draw to stop layering
@@ -239,6 +247,17 @@ while True:
             scorestring ="Score: %s" % score
             mypen2.write(scorestring, False, align='left', font=('Arial', 14, 'normal'))
 
+# ! STEP 11.5: Declare winner or loser
+if (int(score) > int(comp_score)):
+    mypen.setposition(0, 0)
+    mypen.color("yellow")
+    mypen.write("Game Over: You WIN", False, align="center", font=("Arial", 28, "normal"))
+else:
+    mypen.setposition(0, 0)
+    mypen.color("yellow")
+    mypen.write("Game Over: You LOSE", False, align="center", font=("Arial", 28, "normal"))
+
+delay = input("Press Enter to finish.")
 
 
 
