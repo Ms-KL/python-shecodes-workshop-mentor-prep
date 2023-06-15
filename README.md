@@ -1,6 +1,6 @@
-# Python She Codes One Day Workshop
+# She Codes One Day Workshop
 
-## Mentor Prep
+## Python Mentor Prep
 
 Run through of She Codes Tutorial in preparation for [She{Codes} One Day Workshop](https://events.humanitix.com/she-codes-perth-free-1-day-coding-workshop-for-women-june-2023) mentoring in Perth on 17 June 2023.
 
@@ -12,6 +12,6 @@ Run through of She Codes Tutorial in preparation for [She{Codes} One Day Worksho
 
 <img src="https://skillicons.dev/icons?i=py,vscode" height="40"/>
 
-### WIP:
+### Final Product of Turtle Chomp:
 
 <img src="assets\wip-image-new.png" height="350" />
