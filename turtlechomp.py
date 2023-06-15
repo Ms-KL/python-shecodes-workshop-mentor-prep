@@ -190,12 +190,12 @@ while True:
     # ! STEP 10.5: replicate boundary checking to competitor
     # boundary comp checking x coordinate (bounce turtle off x/left and right edges)
     if comp.xcor() > 290 or comp.xcor() < -290:
-        comp.right(180) # turn turtle around 100 degrees
+        comp.right(100) # turn turtle around 100 degrees
         winsound.PlaySound('assets/bounce.wav', winsound.SND_ASYNC)
     
     # boundary comp checking y coordinate (bounce turtle off y/top and bottom edges)
     if comp.ycor() > 290 or comp.ycor() < -290:
-        comp.right(120) # turn turtle around 100 degrees
+        comp.right(100) # turn turtle around 100 degrees
         winsound.PlaySound('assets/bounce.wav', winsound.SND_ASYNC)
 
     # ! STEP 7.3: move food as many times as there are foods in the food list
