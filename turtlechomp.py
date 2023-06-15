@@ -24,6 +24,9 @@
 # ! MODULE 8:
 # https://tutorials.shecodes.com.au/python/space_turtle_chomp/part_8__creating_space_and_sound/
 
+# ! MODULE 9:
+# https://tutorials.shecodes.com.au/python/space_turtle_chomp/part_10__creating_your_opponent/
+
 # __________________________
 
 import turtle
@@ -49,7 +52,6 @@ wn.bgpic('assets/kbgame-bg.gif')
 # tells computer not to refresh screen each time and speeds up animation
 wn.tracer(3)
 
-
 # ! STEP 3.2: draw border
 mypen = turtle.Turtle()
 mypen.penup()
@@ -73,6 +75,10 @@ player.penup() # won't leave a line as the turtle moves
 
 # ! STEP 2.7: fix turtle from jumping when arrow keys are pressed
 player.speed(0) # 0 = fastest animation speed
+
+# ! STEP 9.1: create player score
+# Create variable score
+score = 0
 
 # ! STEP 7.1: create empty list to count for max number of cabbages
 maxFoods = 10
@@ -154,10 +160,6 @@ while True:
         # ! STEP 8.7: play sound fx with boundary bounce
         winsound.PlaySound('assets/bounce.wav', winsound.SND_ASYNC)
 
-    # ! STEP 6.1: move food around screen --> REPLACED WITH STEP 7.3
-    # ! STEP 6.4: make food move faster (From 1 to 3) --> REPLACED WITH STEP 7.3
-    # food.forward(4)
-
     # ! STEP 7.3: move food as many times as there are foods in the food list
     # Move food around
     for food in foods:
@@ -183,6 +185,19 @@ while True:
             food.right(random.randint(0, 360))
             # ! STEP 8.7: play sound fx when turtle collides with food
             winsound.PlaySound('assets/chomp.wav', winsound.SND_ASYNC)
+
+            score +=1 # ! STEP 9.2: add score for every collision
+
+            # ! STEP 9.3: draw the score for every collision
+            # Draw the score on the screen
+            mypen.undo() #! STEP 9.4: undo previous draw to stop layering
+            mypen.penup()
+            mypen.hideturtle()
+            mypen.setposition(-290, 310)
+            scorestring ="Score: %s" % score
+            mypen.write(scorestring, False, align='left', font=('Arial', 14, 'normal'))
+
+
 
 
 
@@ -225,6 +240,11 @@ while True:
     # if isCollision(player, food):
     #     food.setposition(random.randint(-290, 290), random.randint(-290, 290))
     #     food.right(random.randint(0, 360))
+
+
+    # ! STEP 6.1: move food around screen --> REPLACED WITH STEP 7.3
+    # ! STEP 6.4: make food move faster (From 1 to 3) --> REPLACED WITH STEP 7.3
+    # food.forward(4)
 
 # ! RUN to test
 
