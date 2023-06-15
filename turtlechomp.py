@@ -247,6 +247,17 @@ while True:
             scorestring ="Score: %s" % score
             mypen2.write(scorestring, False, align='left', font=('Arial', 14, 'normal'))
 
+# ! STEP 11.5: Declare winner or loser
+if (int(score) > int(comp_score)):
+    mypen.setposition(0, 0)
+    mypen.color("yellow")
+    mypen.write("Game Over: You WIN", False, align="center", font=("Arial", 28, "normal"))
+else:
+    mypen.setposition(0, 0)
+    mypen.color("yellow")
+    mypen.write("Game Over: You LOSE", False, align="center", font=("Arial", 28, "normal"))
+
+delay = input("Press Enter to finish.")
 
 
 
