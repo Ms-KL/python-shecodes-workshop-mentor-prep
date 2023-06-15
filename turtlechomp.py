@@ -156,6 +156,7 @@ turtle.onkey(decrease_speed, 'Down')
 # ! STEP 1.8: move turtle
 while True:
     player.forward(speed) # moves turtle at speed of 1
+    comp.forward(2) # moves opponent turtle at speed of 2 # ! STEP 10.3
 
     # ! STEP 3.4: boundary detection & turtle bounce
     # boundary player checking x coordinate (bounce turtle off x/left and right edges)
@@ -170,6 +171,18 @@ while True:
         # ! STEP 3.5: change angle of turtle when it hits boundary
         player.right(180) # turn turtle around 100 degrees
         # ! STEP 8.7: play sound fx with boundary bounce
+        winsound.PlaySound('assets/bounce.wav', winsound.SND_ASYNC)
+    
+
+    # ! STEP 10.5: replicate boundary checking to competitor
+    # boundary comp checking x coordinate (bounce turtle off x/left and right edges)
+    if comp.xcor() > 290 or comp.xcor() < -290:
+        comp.right(180) # turn turtle around 100 degrees
+        winsound.PlaySound('assets/bounce.wav', winsound.SND_ASYNC)
+    
+    # boundary comp checking y coordinate (bounce turtle off y/top and bottom edges)
+    if comp.ycor() > 290 or comp.ycor() < -290:
+        comp.right(180) # turn turtle around 100 degrees
         winsound.PlaySound('assets/bounce.wav', winsound.SND_ASYNC)
 
     # ! STEP 7.3: move food as many times as there are foods in the food list
