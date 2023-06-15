@@ -24,6 +24,9 @@
 # ! MODULE 8:
 # https://tutorials.shecodes.com.au/python/space_turtle_chomp/part_8__creating_space_and_sound/
 
+# ! MODULE 9:
+# https://tutorials.shecodes.com.au/python/space_turtle_chomp/part_10__creating_your_opponent/
+
 # __________________________
 
 import turtle
@@ -48,7 +51,6 @@ wn.bgpic('assets/kbgame-bg.gif')
 # ! STEP 7.6: stop screen from being jumpy due to refreshing of multiple foods.
 # tells computer not to refresh screen each time and speeds up animation
 wn.tracer(3)
-
 
 # ! STEP 3.2: draw border
 mypen = turtle.Turtle()
