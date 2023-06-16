@@ -14,9 +14,9 @@ Run through of She Codes Tutorial in preparation for [She{Codes} One Day Worksho
 
 ### Content:
 
-- How To Python (Jupyter Notebook)
-- Turtle Chomp game (code with walk through notes and comments by Kristy)
-- Turtle Chomp game (copy of workshop code)
+- How To Python ([Jupyter Notebook](https://github.com/Ms-KL/python-shecodes-workshop-mentor-prep/blob/main/notebooks/how_to_python.ipynb))
+- Turtle Chomp game ([code with walk through notes and comments by Kristy](https://github.com/Ms-KL/python-shecodes-workshop-mentor-prep/blob/main/turtlechomp.py))
+- Turtle Chomp game ([copy of workshop code](https://github.com/Ms-KL/python-shecodes-workshop-mentor-prep/blob/main/coursecode.py))
 
 ### Final Product of Turtle Chomp:
 
