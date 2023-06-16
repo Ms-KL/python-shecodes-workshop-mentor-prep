@@ -136,18 +136,18 @@ while True:
         #Boundary Food Checking x coordinate
         if food.xcor() > 290 or food.xcor() <-290:
            food.right(180)
-           winsound.PlaySound('bounce.wav', winsound.SND_ASYNC)
+           winsound.PlaySound('assets/bounce.wav', winsound.SND_ASYNC)
 
         #Boundary Food Checking y coordinate
         if food.ycor() > 290 or food.ycor() <-290:
            food.right(180)
-           winsound.PlaySound('bounce.wav', winsound.SND_ASYNC)
+           winsound.PlaySound('assets/bounce.wav', winsound.SND_ASYNC)
 
         #Player Collision checking
         if isCollision(player, food):
            food.setposition(random.randint(-290, 290), random.randint(-290, 290))
            food.right(random.randint(0,360))
-           winsound.PlaySound('chomp.wav', winsound.SND_ASYNC)
+           winsound.PlaySound('assets/chomp.wav', winsound.SND_ASYNC)
            score+=1
            #Draw the score on the screen
            mypen.undo()
@@ -161,7 +161,7 @@ while True:
         if isCollision(comp, food):
            food.setposition(random.randint(-290, 290), random.randint(-290, 290))
            food.right(random.randint(0,360))
-           winsound.PlaySound('chomp.wav', winsound.SND_ASYNC)
+           winsound.PlaySound('assets/chomp.wav', winsound.SND_ASYNC)
            compscore+=1
            #Draw the Comp score on the screen
            mypen2.undo()

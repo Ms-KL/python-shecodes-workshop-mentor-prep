@@ -12,6 +12,12 @@ Run through of She Codes Tutorial in preparation for [She{Codes} One Day Worksho
 
 <img src="https://skillicons.dev/icons?i=py,vscode" height="40"/>
 
+### Content:
+
+- How To Python (Jupyter Notebook)
+- Turtle Chomp game (code with walk through notes and comments by Kristy)
+- Turtle Chomp game (copy of workshop code)
+
 ### Final Product of Turtle Chomp:
 
 <img src="assets\wip-image-new.png" height="350" />
